@@ -7,12 +7,12 @@ const generateImage = async (req, res) => {
     const { prompt } = req.body;
     const userId = req.userId; // ✅ coming from auth middleware
 
-    console.log(" Prompt:", prompt);
-    console.log(" User ID:", userId);
+    // console.log(" Prompt:", prompt);
+    // console.log(" User ID:", userId);
 
     // ✅ Find user
     const user = await userModel.findById(userId);
-    console.log(" User:", user);
+    // console.log(" User:", user);
 
     if (!user || !prompt) {
       return res.status(400).json({ success: false, message: "Missing details." });
@@ -67,8 +67,8 @@ const generateImage = async (req, res) => {
       resultImage,
     });
   } catch (error) {
-    console.error(" ClipDrop error status:", error.response?.status);
-    console.error(" ClipDrop error details:", error.response?.data?.toString());
+    // console.error(" ClipDrop error status:", error.response?.status);
+    // console.error(" ClipDrop error details:", error.response?.data?.toString());
 
     res.status(error.response?.status || 500).json({
       success: false,
